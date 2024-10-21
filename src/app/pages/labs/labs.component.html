@@ -1,0 +1,83 @@
+<div class="container">
+  <h1>Hola mundo</h1>
+  <h2>{{ welcome }}</h2>
+  
+  <ul>
+    <li *ngFor="let task of tasks()">
+      {{task}}
+    </li>
+  </ul>
+  
+  <hr>
+  
+  <h2>{{ 'hola'.repeat(4) }}</h2>
+  <p> Hola soy {{ name() }} y tengo {{edad}} años</p>
+  
+  <hr>
+  
+  <img [src]="img" alt="">
+  <input type="text" [value]="name()">
+  <button [disabled]="disabled">Prueba</button>
+  
+  <hr>
+  
+  <button (click)="clickHandler()">Click me</button>
+  <input type="number" (change)="changeHandler($event)">
+
+  <p>keydown</p>
+  <input type="text" (keydown)="keydownHandler($event)">
+  <p>keydown shift t</p>
+  <input type="text" (keydown.shift.t)="clickHandler()">
+
+  <hr>
+
+  <h1>{{ name() }}</h1>
+
+  <input type="text" (change)="changeHandler($event)">
+
+  <hr>
+
+  <ul>
+    <p>total: {{tasks().length}}</p>
+    <li *ngFor="let task of tasks(); index as i">
+     {{i}} {{task}}
+    </li>
+  </ul>
+
+  <hr />
+
+  <div *ngIf="name() === 'antonio'">
+    My content
+  </div>
+
+  <div [ngSwitch]="name()">
+    <p *ngSwitchCase="'antonio'">Yo soy Antonio</p>
+    <p *ngSwitchCase="'mario'">Yo soy Mario</p>
+    <p *ngSwitchCase="'toño'">Yo soy Toño</p>
+    <p *ngSwitchDefault>NO soy nadie</p>
+  </div>
+
+  <hr />
+  <input type="color" [formControl]="colorCtrl">
+  <p>color: {{colorCtrl.value}}</p>
+
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value"/>
+    </g>
+  </svg>
+
+  <hr />
+
+  <input type="text" [formControl]="widthCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value"></span>
+
+  <hr />
+  <p>
+    <input type="text" [formControl]="nameCtrl"> <br />
+    <span class="message-error" [class.active]="nameCtrl.invalid && nameCtrl.touched">Nombre inválido</span>
+  </p>
+  <p>
+    <input type="text">
+  </p>
+ 
